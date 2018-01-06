@@ -22,24 +22,25 @@ client.query('SELECT * FROM books').then((result)=> {console.log(result.rows[0])
 
 app.use(bodyParser.urlencoded({extended:true}))
 
-app.get('/books', (req, res) =>{
+app.get('/api/v1/books', (req, res) =>{
     client.query(`
     SELECT * FROM books
     `).then(results => res.send(results.rows))
     .catch(err => console.log(err))
 })
 
-client.query(`
-    CREATE TABLE if not exists books(
-        id serial primary key,
-        author VARCHAR(255),
-        title VARCHAR(255),
-        isbn VARCHAR(255),
-        image_url VARCHAR(255),
-        description text
-    );
-`)
-client.query(`
-    INSERT INTO books(author, title, isbn, image_url, description)
-    VALUES('author1', 'title1', 'isbn1', 'http://www.placecage.com/300/200', 'this is a book');
-`)
+// client.query(`
+//     CREATE TABLE if not exists books(
+//         id serial primary key,
+//         author VARCHAR(255),
+//         title VARCHAR(255),
+//         isbn VARCHAR(255),
+//         image_url VARCHAR(255),
+//         description text
+//     );
+// `)
+
+// client.query(`
+//     INSERT INTO books(author, title, isbn, image_url, description)
+//     VALUES('author1', 'title1', 'isbn1', 'http://www.placecage.com/300/200', 'this is a book');
+// `)
