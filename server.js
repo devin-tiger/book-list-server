@@ -3,7 +3,8 @@ const app = express()
 const pg = require('pg')
 const bodyParser = require('body-parser')
 
-// let ??? = __API_URL__;
+// let __API_URL__ = "http://localhost:3000"
+// let __API_URL__ = "https://dc-th-booklist.herokuapp.com"
 
 const PORT = process.env.PORT || 3000
 
@@ -17,7 +18,7 @@ app.get('/test', (req, res) => res.send('hello world'))
 
 app.listen(PORT, () => {console.log(`server listening on ${PORT}`)})
 
-// client.query('SELECT * FROM dogs').then((result)=> {console.log(result.rows[0])})
+// client.query('SELECT * FROM books').then((result)=> {console.log(result.rows[0])})
 
-app.use(express.static('./public'))
 app.use(bodyParser.urlencoded({extended:true}))
+
