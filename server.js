@@ -29,6 +29,10 @@ app.get('/api/v1/books', (req, res) =>{
     .catch(err => console.log(err))
 })
 
+app.get('/ping', (req, res) => {
+    res.send('pong')
+})
+
 // client.query(`
 //     CREATE TABLE if not exists books(
 //         id serial primary key,
