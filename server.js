@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const pg = require('pg')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 // let __API_URL__ = "http://localhost:3000"
 // let __API_URL__ = "https://dc-th-booklist.herokuapp.com"
@@ -13,6 +14,7 @@ const DATABASE_URL = process.env.DATABASE_URL || 'postgres://postgres:1234@local
 const client = new pg.Client(DATABASE_URL)
 
 client.connect()
+app.use(cors())
 
 app.get('/test', (req, res) => res.send('hello world'))
 
