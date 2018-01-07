@@ -31,12 +31,14 @@ app.get('/api/v1/books', (req, res) =>{
     .catch(err => console.log(err))
 })
 
-// app.post(__API_URL__, (req, res) => {
-//     $foreach().
-// })
+app.post(__API_URL__, (req, res) => {
+    client.query(`SELECT * FROM books`).then(results =>
+    $('#books-list').append(results))
+    
+})
 
-app.post('/', (req, res) => {
-    res.send('test')
+app.get('/', (req, res) => {
+    res.send('pong')
 })
 
 // client.query(`
