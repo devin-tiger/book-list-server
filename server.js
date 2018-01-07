@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.get('/api/v1/books', (req, res) =>{
     client.query(`
     SELECT * FROM books
-    `).then(results => res.send(results.rows, console.log(rows)))
+    `).then(results => res.send(results.rows))
     .catch(err => console.log(err))
 })
 
