@@ -35,8 +35,8 @@ app.get('/api/v1/books', (req, res) =>{
 //     $foreach().
 // })
 
-app.get('/', (req, res) => {
-    res.send(req.body)
+app.post('/', (req, res) => {
+    res.send('test')
 })
 
 // client.query(`
