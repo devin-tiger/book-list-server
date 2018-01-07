@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 // let __API_URL__ = "http://localhost:3000"
-// let __API_URL__ = "https://dc-th-booklist.herokuapp.com"
+let __API_URL__ = "https://dc-th-booklist.herokuapp.com"
 
 const PORT = process.env.PORT || 3000
 
@@ -27,11 +27,15 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.get('/api/v1/books', (req, res) =>{
     client.query(`
     SELECT * FROM books
-    `).then(results => res.send(results.rows))
+    `).then(results => res.send(results.rows, console.log(rows)))
     .catch(err => console.log(err))
 })
 
-app.get('/ping', (req, res) => {
+app.post(__API_URL__, (req, res) => {
+    $foreach().
+})
+
+app.get('/', (req, res) => {
     res.send('pong')
 })
 
