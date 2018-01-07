@@ -36,7 +36,7 @@ app.get('/api/v1/books', (req, res) =>{
 // })
 
 app.get('/', (req, res) => {
-    res.send('pong')
+    res.send(req.body)
 })
 
 // client.query(`
