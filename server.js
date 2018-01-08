@@ -34,13 +34,13 @@ app.get('/api/v1/books', (req, res) =>{
 app.get(__API_URL__, (request, response) => {
     response.sendFile('index.html', {root: '../book-list-client'});
     
-    function showBooks(results){
-        var $ul = $('#books-list')
-        $ul.empty()
-        results.forEach(books =>{
-            $ul.append(`<li> ${books.author}, ${books.title}, ${books.isbn}, ${books.img_url}</li>`)
-        })
-    }
+    // function showBooks(results){
+    //     var $ul = $('#books-list')
+    //     $ul.empty()
+    //     results.forEach(books =>{
+    //         $ul.append(`<li> ${books.author}, ${books.title}, ${books.isbn}, ${books.img_url}</li>`)
+    //     })
+    // }
 });
     
 
