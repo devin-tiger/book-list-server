@@ -31,7 +31,7 @@ app.get('/api/v1/books', (req, res) =>{
     .catch(err => console.log(err))
 })
 
-app.get(__API_URL__, (request, response) => {
+app.get('/', (request, response) => {
     response.sendFile('index.html', {root: '../book-list-client'});
     
     // function showBooks(results){
