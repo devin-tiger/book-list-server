@@ -32,7 +32,7 @@ app.get('/api/v1/books', (req, res) =>{
 })
 
 app.get('/', (request, response) => {
-    response.sendFile('index.html', {root: './book-list-client'});
+    response.sendFile('index.html', {root: '../book-list-client'});
   });
 
 
