@@ -31,6 +31,11 @@ app.get('/api/v1/books', (req, res) =>{
     .catch(err => console.log(err))
 })
 
+app.get('/', (request, response) => {
+    response.sendFile('index.html', {root: '../book-list-client'});
+});
+    
+
 // client.query(`
 //     CREATE TABLE if not exists books(
 //         id serial primary key,
