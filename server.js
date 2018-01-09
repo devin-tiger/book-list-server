@@ -26,22 +26,22 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 app.get('/api/v1/books', (req, res) =>{
     client.query(`
-    SELECT * FROM books
+    SELECT id, title, author, image_url FROM books
     `).then(results => res.send(results.rows))
     .catch(err => console.log(err))
 })
 
-// app.get('/', (request, response) => {
-//     response.sendFile('index.html', {root: '../book-list-client'});
+app.get('/', (request, response) => {
+    response.sendFile('index.html', {root: '../book-list-client'});
     
-//     // function showBooks(results){
-//     //     var $ul = $('#books-list')
-//     //     $ul.empty()
-//     //     results.forEach(books =>{
-//     //         $ul.append(`<li> ${books.author}, ${books.title}, ${books.isbn}, ${books.img_url}</li>`)
-//     //     })
-//     // }
-// });
+    function showBooks(results){
+        var $ul = $('#books-list')
+        $ul.empty()
+        results.forEach(books =>{
+            $ul.append(`<li> ${books.author}, ${books.title}, ${books.isbn}, ${books.img_url}</li>`)
+        })
+    }
+});
     
 
 // client.query(`
