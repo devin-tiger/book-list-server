@@ -4,8 +4,8 @@ const pg = require('pg')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-let __API_URL__ = "http://localhost:3000"
-let __API_URL__ = "https://dc-th-booklist.herokuapp.com"
+// let __API_URL__ = "http://localhost:3000"
+// let __API_URL__ = "https://dc-th-booklist.herokuapp.com"
 
 const PORT = process.env.PORT || 3000
 
@@ -31,17 +31,17 @@ app.get('/api/v1/books', (req, res) =>{
     .catch(err => console.log(err))
 })
 
-app.get('/', (request, response) => {
-    response.sendFile('index.html', {root: '../book-list-client'});
+// app.get('/', (request, response) => {
+//     response.sendFile('index.html', {root: '../book-list-client'});
     
-    // function showBooks(results){
-    //     var $ul = $('#books-list')
-    //     $ul.empty()
-    //     results.forEach(books =>{
-    //         $ul.append(`<li> ${books.author}, ${books.title}, ${books.isbn}, ${books.img_url}</li>`)
-    //     })
-    // }
-});
+//     // function showBooks(results){
+//     //     var $ul = $('#books-list')
+//     //     $ul.empty()
+//     //     results.forEach(books =>{
+//     //         $ul.append(`<li> ${books.author}, ${books.title}, ${books.isbn}, ${books.img_url}</li>`)
+//     //     })
+//     // }
+// });
     
 
 // client.query(`
