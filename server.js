@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 // let __API_URL__ = "http://localhost:3000"
-// let __API_URL__ = "https://dc-th-booklist.herokuapp.com"
+let __API_URL__ = "https://dc-th-booklist.herokuapp.com"
 
 const PORT = process.env.PORT || 3000
 
@@ -31,10 +31,9 @@ app.get('/api/v1/books', (req, res) =>{
     .catch(err => console.log(err))
 })
 
-app.get('/', (request, response) => {
-    response.sendFile('index.html', {root: '../book-list-client'});
+app.get(__API_URL__, (request, response) => {
+    response.sendFile('index.html', {root: '../book-list-client/'});
 });
-    
 
 // client.query(`
 //     CREATE TABLE if not exists books(
