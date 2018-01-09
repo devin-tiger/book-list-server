@@ -4,9 +4,6 @@ const pg = require('pg')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-// let __API_URL__ = "http://localhost:3000"
-let __API_URL__ = "https://dc-th-booklist.herokuapp.com"
-
 const PORT = process.env.PORT || 3000
 
 const DATABASE_URL = process.env.DATABASE_URL || 'postgres://postgres:1234@localhost:5432/books_app'
@@ -31,9 +28,6 @@ app.get('/api/v1/books', (req, res) =>{
     .catch(err => console.log(err))
 })
 
-app.get(__API_URL__, (request, response) => {
-    response.sendFile('index.html', {root: '../book-list-client/'});
-});
 
 // client.query(`
 //     CREATE TABLE if not exists books(
