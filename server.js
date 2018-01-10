@@ -17,15 +17,37 @@ app.get('/test', (req, res) => res.send('hello world'))
 
 app.listen(PORT, () => {console.log(`server listening on ${PORT}`)})
 
-client.query('SELECT * FROM books').then((result)=> {console.log(result.rows[0])})
+// client.query('SELECT * FROM books').then((result)=> {console.log(result.rows[0])})
 
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.get('/api/v1/books', (req, res) =>{
     client.query(`
-    SELECT id, title, author, image_url FROM books
+    SELECT id, title, author, image_url FROM books;
     `).then(results => res.send(results.rows))
     .catch(err => console.log(err))
+})
+
+app.get('/api/v1/books/:id', (req, res) =>{
+    client.query(`
+    SELECT * FROM books WHERE id=${req.params.id}
+    `).then(results => res.send(results.rows[0]))
+    .catch(err => console.log(err))
+})
+
+app.post('/api/v1/books', express.json(), express.urlencoded({extended:true}), (req, res) =>{
+    client.query(`
+    INSERT INTO books
+        (title, author, isbn, image_url, description)
+        VALUES($1, $2, $3, $4, $5)
+    `,[
+        req.body.title,
+        req.body.author,
+        req.body.isbn,
+        req.body.image_url,
+        req.body.description
+    ]).then(() => res.send('inserted correctly'))
+    .catch(err => console.lot(err))
 })
 
 
