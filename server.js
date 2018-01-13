@@ -37,7 +37,7 @@ app.get('/api/v1/books/:id', (req, res) =>{
 
 app.delete('/api/v1/books/:id', (req, res) =>{
     client.query(`
-    DELETE * FROM books WHERE id=${req.params.id}
+    DELETE FROM books WHERE id=${req.params.id}
     `).then(results => res.send(results.rows[0]))
     .catch(err => console.log(err))
 })
