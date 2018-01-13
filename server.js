@@ -13,7 +13,7 @@ const client = new pg.Client(DATABASE_URL)
 client.connect()
 app.use(cors())
 
-app.get('/test', (req, res) => res.send('hello world'))
+// app.get('/test', (req, res) => res.send('hello world'))
 
 app.listen(PORT, () => {console.log(`server listening on ${PORT}`)})
 
@@ -31,6 +31,13 @@ app.get('/api/v1/books', (req, res) =>{
 app.get('/api/v1/books/:id', (req, res) =>{
     client.query(`
     SELECT * FROM books WHERE id=${req.params.id}
+    `).then(results => res.send(results.rows[0]))
+    .catch(err => console.log(err))
+})
+
+app.delete('/api/v1/books/:id', (req, res) =>{
+    client.query(`
+    DELETE * FROM books WHERE id=${req.params.id}
     `).then(results => res.send(results.rows[0]))
     .catch(err => console.log(err))
 })
