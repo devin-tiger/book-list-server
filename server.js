@@ -57,7 +57,7 @@ app.post('/api/v1/books', express.json(), express.urlencoded({extended:true}), (
     .catch(err => console.lot(err))
 })
 
-app.put('/api/v1/books', express.json(), express.urlencoded({extended:true}), (req, res) =>{
+app.put('/api/v1/books/:id', express.json(), express.urlencoded({extended:true}), (req, res) =>{
     client.query(`
     UPDATE books
         SET (title = '$1', author = '$2', isbn = '$3', image_url = '$4', description = '$5')
